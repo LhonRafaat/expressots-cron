@@ -52,4 +52,10 @@ export interface ICron {
    * Get the list of tasks created using the `schedule` function
    */
   getTasks(): Map<string, ScheduledTask>;
+
+  /**
+   * Get a specific task created using the `schedule` function
+   * @param name
+   */
+  getTask(name: string): ScheduledTask;
 }
