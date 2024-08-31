@@ -36,7 +36,7 @@ export class CronProvider implements IProvider, ICron {
    * To validate whether the expression is a cron expression or not
    * @param cronExpression
    */
-  validate(cronExpression: string): boolean {
+  public validate(cronExpression: string): boolean {
     return cron.validate(cronExpression);
   }
 
@@ -44,7 +44,17 @@ export class CronProvider implements IProvider, ICron {
    * Get the list of tasks created using the `schedule` function
    * @returns {Map<string, ScheduledTask>} a map of task names to tasks
    */
-  getTasks(): Map<string, ScheduledTask> {
+  public getTasks(): Map<string, ScheduledTask> {
     return cron.getTasks();
+  }
+
+  public getTask(name: string): ScheduledTask {
+    const tasks = cron.getTasks();
+
+    const task = tasks.get(name);
+
+    if (!task) this.report.error(`Task not found: ${name}`);
+
+    return task;
   }
 }
