@@ -29,7 +29,7 @@ export interface ScheduleOptions {
   name?: string;
 }
 
-export interface CronOptions {
+export interface ICron {
   /**
    * Creates a new task to execute the given function when the cron expression ticks.
    * @param cronExpression
