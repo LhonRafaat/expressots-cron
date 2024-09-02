@@ -1,7 +1,11 @@
-import * as cron from "node-cron";
 import { IProvider, Report } from "@expressots/core";
-import { ICron, ScheduledTask, ScheduleOptions } from "./cron.interface";
+import { ICron, ScheduleOptions } from "./cron.interface";
 import { injectable } from "inversify";
+import { createCron } from "./utils";
+import { CronJob } from "cron";
+import cronDB from "./db/cron.db";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 @injectable()
 export class CronProvider implements IProvider, ICron {
   readonly author: string = "Lhon Rafaat Mohammed";
@@ -22,39 +26,36 @@ export class CronProvider implements IProvider, ICron {
    */
   public schedule(
     cronExpression: string,
-    func: ((now: Date | "manual" | "init") => void) | string,
+    func: () => void,
+    onCompleted?: () => void,
     options?: ScheduleOptions,
-  ): ScheduledTask {
-    const isValid = this.validate(cronExpression);
-    if (!isValid) {
-      this.report.error(`Invalid cron expression: ${cronExpression}`);
-    }
-    return cron.schedule(cronExpression, func, options);
-  }
+  ): CronJob {
+    const job = createCron(cronExpression, func, onCompleted, options);
 
-  /**
-   * To validate whether the expression is a cron expression or not
-   * @param cronExpression
-   */
-  public validate(cronExpression: string): boolean {
-    return cron.validate(cronExpression);
+    cronDB.addJob(options.name, job);
+
+    return job;
   }
 
   /**
    * Get the list of tasks created using the `schedule` function
    * @returns {Map<string, ScheduledTask>} a map of task names to tasks
    */
-  public getTasks(): Map<string, ScheduledTask> {
-    return cron.getTasks();
+  public getTasks(): Map<string, CronJob> {
+    return cronDB.getJobs();
   }
 
-  public getTask(name: string): ScheduledTask {
-    const tasks = cron.getTasks();
+  /**
+   * Get a specific task created using the `schedule` function
+   * @param name the name of the task to retrieve
+   * @returns the scheduled task
+   * @throws {Error} if the task is not found
+   */
+  public getTask(name: string): CronJob {
+    const job = cronDB.getJob(name);
 
-    const task = tasks.get(name);
+    if (!job) this.report.error(`Task ${name} not found`, 404, "cron");
 
-    if (!task) this.report.error(`Task not found: ${name}`);
-
-    return task;
+    return job;
   }
 }
