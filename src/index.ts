@@ -1,3 +1,3 @@
 export * from "./cron.interface";
-export * from "./cron.provide";
-export * from "./cron.decorator";
+export * from "./cron.provider";
+export * from "./decorators/cron.decorator";
