@@ -1,10 +1,4 @@
-import { EventEmitter } from "events";
-
-export interface ScheduledTask extends EventEmitter {
-  now: (now?: Date) => void;
-  start: () => void;
-  stop: () => void;
-}
+import { CronJob } from "cron";
 
 export interface ScheduleOptions {
   /**
@@ -12,7 +6,7 @@ export interface ScheduleOptions {
    *
    * Defaults to `true`
    */
-  scheduled?: boolean | undefined;
+  imidiate?: boolean | undefined;
   /**
    * The timezone that is used for job scheduling
    */
@@ -38,24 +32,19 @@ export interface ICron {
    */
   schedule(
     cronExpression: string,
-    func: ((now: Date | "manual" | "init") => void) | string,
+    func: () => void,
+    onCompleted?: () => void,
     options?: ScheduleOptions,
-  ): ScheduledTask;
-
-  /**
-   * To validate whether the expression is a cron expression or not
-   * @param cronExpression
-   */
-  validate(cronExpression: string): boolean;
+  ): CronJob;
 
   /**
    * Get the list of tasks created using the `schedule` function
    */
-  getTasks(): Map<string, ScheduledTask>;
+  getTasks(): Map<string, CronJob>;
 
   /**
    * Get a specific task created using the `schedule` function
    * @param name
    */
-  getTask(name: string): ScheduledTask;
+  getTask(name: string): CronJob;
 }
