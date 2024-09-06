@@ -4,6 +4,10 @@ import * as uuid from "uuid";
 class CronDB {
   readonly jobs: Map<string, CronJob>;
 
+  constructor() {
+    this.jobs = new Map();
+  }
+
   public getJobs(): Map<string, CronJob> {
     return this.jobs;
   }
@@ -16,13 +20,10 @@ class CronDB {
     if (!name) {
       const id = uuid.v4();
       this.jobs.set(id.toString(), job);
-      console.log(this.getJobs());
 
       return;
     }
     this.jobs.set(name, job);
-
-    console.log(this.getJobs());
   }
 }
 const cronDB = new CronDB();
