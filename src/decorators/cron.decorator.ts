@@ -1,7 +1,7 @@
 import { ScheduleOptions } from "../cron.interface";
 import { Report } from "@expressots/core";
 import { createCron } from "../utils";
-import { getCronMetadata, setCronMetadata } from "../utils/cron.metadata";
+import { setCronMetadata } from "../utils/cron.metadata";
 import cronDB from "../db/cron.db";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -12,9 +12,7 @@ export function Cron(cronExpression: string, options?: ScheduleOptions): MethodD
     propertyKey: string | symbol,
     descriptor: PropertyDescriptor,
   ): any {
-    const metadata = getCronMetadata(target);
-    metadata.push({ propertyKey, cronExpression, options });
-    setCronMetadata(target, metadata);
+    setCronMetadata(target, propertyKey);
 
     const originalMethod = descriptor.value as (...args: Array<any>) => void;
 

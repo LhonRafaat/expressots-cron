@@ -5,6 +5,6 @@ export function getCronMetadata(target: object): Array<any> {
   return Reflect.getMetadata(CRON_METADATA_KEY, target) || [];
 }
 
-export function setCronMetadata(target: object, metadata: Array<any>): void {
-  Reflect.defineMetadata(CRON_METADATA_KEY, metadata, target);
+export function setCronMetadata(target: object, propertyKey: string | symbol): void {
+  Reflect.defineMetadata(CRON_METADATA_KEY, true, target, propertyKey);
 }
