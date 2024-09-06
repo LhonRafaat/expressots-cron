@@ -75,7 +75,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@codecov/vite-plugin": "0.0.1-beta.10",
+    "@codecov/vite-plugin": "0.0.1-beta.12",
     "@commitlint/cli": "19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@release-it/conventional-changelog": "8.0.1",
