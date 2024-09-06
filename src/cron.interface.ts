@@ -2,12 +2,6 @@ import { CronJob } from "cron";
 
 export interface ScheduleOptions {
   /**
-   * A boolean to set if the created task is scheduled.
-   *
-   * Defaults to `true`
-   */
-  imidiate?: boolean | undefined;
-  /**
    * The timezone that is used for job scheduling
    */
   timezone?: string;

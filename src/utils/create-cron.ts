@@ -14,8 +14,7 @@ export function createCron(
   //     this.report.error(`Invalid cron expression: ${cronExpression}`);
   //   }
 
-  const isImmidiate = options?.imidiate ?? true;
-  const job = new CronJob(cronExpression, func, onCompleted, isImmidiate, options.timezone);
+  const job = new CronJob(cronExpression, func, onCompleted, true, options.timezone);
 
   return job;
 }
