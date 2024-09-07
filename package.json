@@ -1,7 +1,7 @@
 {
-  "name": "@expressots/cron",
+  "name": "expressots-cron",
   "version": "1.0.0",
-  "description": "Expressots - Cron Provider (@expressots/cron)",
+  "description": "Expressots - Cron Provider (expressots-cron)",
   "author": "Lhon Rafaat Mohammed",
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/types/index.d.ts",
@@ -21,17 +21,17 @@
     "lib/**/*"
   ],
   "license": "MIT",
-  "homepage": "https://expresso-ts.com",
+  "homepage": "https://github.com/LhonRafaat/expressots-cron",
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/expressots"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/expressots/<<repo_name>>"
+    "url": "https://github.com/LhonRafaat/expressots-cron"
   },
   "bugs": {
-    "url": "https://github.com/expressots/<<repo_name>>/issues"
+    "url": "https://github.com/LhonRafaat/expressots-cron/issues"
   },
   "publishConfig": {
     "access": "public"

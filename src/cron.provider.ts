@@ -4,6 +4,7 @@ import { injectable } from "inversify";
 import { createCron } from "./utils";
 import { CronJob } from "cron";
 import cronDB from "./db/cron.db";
+import { EXPRESSOTS_CRON } from "./constants";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 @injectable()
@@ -54,7 +55,7 @@ export class CronProvider implements IProvider, ICron {
   public getTask(name: string): CronJob {
     const job = cronDB.getJob(name);
 
-    if (!job) this.report.error(`Task ${name} not found`, 404, "cron");
+    if (!job) this.report.error(`Task ${name} not found`, 404, EXPRESSOTS_CRON);
 
     return job;
   }

@@ -3,6 +3,7 @@ import { Report } from "@expressots/core";
 import { createCron } from "../utils";
 import { setCronMetadata } from "../utils/cron.metadata";
 import cronDB from "../db/cron.db";
+import { EXPRESSOTS_CRON } from "../constants";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export function Cron(cronExpression: string, options?: ScheduleOptions): MethodDecorator {
@@ -33,9 +34,7 @@ export function Cron(cronExpression: string, options?: ScheduleOptions): MethodD
       return descriptor;
     } catch (error) {
       console.log(error);
-      report.error("Unexpected error on cron decorator", 500, "cron-decorator");
+      report.error("Unexpected error on cron decorator", 500, EXPRESSOTS_CRON);
     }
-
-    // Wrap the original method to bind the 'this' context
   };
 }
