@@ -5,12 +5,22 @@ export interface ScheduleOptions {
    * The timezone that is used for job scheduling
    */
   timezone?: string;
+
   /**
-   * Specifies whether to recover missed executions instead of skipping them.
+   * Specifies whether to start the job immediately
    *
-   * Defaults to `false`
+   * Defaults to `true`
    */
-  recoverMissedExecutions?: boolean;
+
+  startImmediately?: boolean;
+
+  /**
+   * The function to execute when the job completes
+   * @returns void
+   */
+
+  onCompleted?: () => void;
+
   /**
    * The schedule name
    */
@@ -24,12 +34,7 @@ export interface ICron {
    * @param func
    * @param options
    */
-  schedule(
-    cronExpression: string,
-    func: () => void,
-    onCompleted?: () => void,
-    options?: ScheduleOptions,
-  ): CronJob;
+  schedule(cronExpression: string, func: () => void, options?: ScheduleOptions): CronJob;
 
   /**
    * Get the list of tasks created using the `schedule` function
