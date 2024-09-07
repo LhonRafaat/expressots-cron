@@ -68,7 +68,6 @@
   },
   "dependencies": {
     "@expressots/core": "2.16.1",
-    "@expressots/cron": "file:expressots-cron-1.0.0.tgz",
     "cron": "^3.1.7",
     "inversify": "6.0.2",
     "reflect-metadata": "0.2.2",
