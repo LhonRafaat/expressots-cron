@@ -6,7 +6,10 @@ import cronDB from "../db/cron.db";
 import { EXPRESSOTS_CRON } from "../constants";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export function Cron(cronExpression: string, options?: ScheduleOptions): MethodDecorator {
+export function Cron(
+  cronExpression: string,
+  options?: Omit<ScheduleOptions, "startImmediately">,
+): MethodDecorator {
   const report = new Report();
   return function (
     target: object,
@@ -19,12 +22,10 @@ export function Cron(cronExpression: string, options?: ScheduleOptions): MethodD
 
     try {
       descriptor.value = function (...args: Array<any>): unknown {
-        const result = createCron(
-          cronExpression,
-          () => originalMethod.apply(this, args),
-          null,
-          options,
-        );
+        const result = createCron(cronExpression, () => originalMethod.apply(this, args), {
+          ...options,
+          startImmediately: true,
+        });
 
         cronDB.addJob(options?.name, result);
 

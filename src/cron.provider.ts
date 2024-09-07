@@ -25,15 +25,10 @@ export class CronProvider implements IProvider, ICron {
    * @param [options] the options to pass to the cron scheduler
    * @returns the scheduled task
    */
-  public schedule(
-    cronExpression: string,
-    func: () => void,
-    onCompleted?: () => void,
-    options?: ScheduleOptions,
-  ): CronJob {
-    const job = createCron(cronExpression, func, onCompleted, options);
+  public schedule(cronExpression: string, func: () => void, options?: ScheduleOptions): CronJob {
+    const job = createCron(cronExpression, func, options);
 
-    cronDB.addJob(options.name, job);
+    cronDB.addJob(options?.name, job);
 
     return job;
   }
