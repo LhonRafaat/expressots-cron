@@ -16,7 +16,14 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ["lib", "node_modules", ".eslintrc.cjs", "vitest.config.ts"],
+  ignorePatterns: [
+    "lib",
+    "node_modules",
+    ".eslintrc.cjs",
+    "vitest.config.ts",
+    ".eslintrc.js",
+    "test",
+  ],
   rules: {
     "@typescript-eslint/adjacent-overload-signatures": "error",
     "@typescript-eslint/array-type": ["error", { default: "generic" }],
