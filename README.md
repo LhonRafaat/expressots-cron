@@ -28,7 +28,7 @@ npm install expressots-cron
 
 Make sure to register your provider inside your `app.provider.ts`
 
-```
+```javascript
 import { AppExpress } from "@expressots/adapter-express";
 import {
     Env,
@@ -71,7 +71,7 @@ use it inside a controller file or a usecase.
 
 using the decorator:
 
-```
+```javascript
 import { controller } from "@expressots/adapter-express";
 import { AppUseCase } from "./app.usecase";
 import { CronProvider, Cron } from "expressots-cron";
@@ -102,7 +102,7 @@ export class AppController {
 
 using the provider:
 
-```
+```javascript
 import { controller } from "@expressots/adapter-express";
 import { AppUseCase } from "./app.usecase";
 import { CronProvider, Cron } from "expressots-cron";
@@ -159,13 +159,13 @@ For example:
 
 ### Cron Decorator
 
-```
+```javascript
 @Cron("*/2 * * * * *", options)
 ```
 
 options are:
 
-```
+```javascript
 export interface ScheduleOptions {
   /**
    * The timezone that is used for job scheduling
@@ -199,7 +199,7 @@ export interface ScheduleOptions {
 
 methods that are available on the provider:
 
-```
+```javascript
 export interface ICron {
   /**
    * Creates a new task to execute the given function when the cron expression ticks.
