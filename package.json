@@ -1,6 +1,6 @@
 {
   "name": "expressots-cron",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Expressots - Cron Provider (expressots-cron)",
   "author": "Lhon Rafaat Mohammed",
   "main": "./lib/cjs/index.js",
@@ -22,10 +22,6 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/LhonRafaat/expressots-cron",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/expressots"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/LhonRafaat/expressots-cron"
@@ -39,12 +35,8 @@
   "keywords": [
     "expressots",
     "nodejs",
-    "microservices",
-    "typescript",
-    "clean-architecture",
-    "typescript-framework",
-    "framework",
-    "server-side"
+    "cron",
+    "cron-decorator"
   ],
   "engines": {
     "node": ">=18.0.0"
