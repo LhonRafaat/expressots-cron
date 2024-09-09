@@ -1,7 +1,7 @@
 import { defineConfig } from "vitest/config";
 import { codecovVitePlugin } from "@codecov/vite-plugin";
 import tsconfigPaths from "vite-tsconfig-paths";
-
+import * as path from "path";
 /**
  * @see {@link https://vitejs.dev/config/}
  * @see {@link https://vitest.dev/config/}
@@ -15,6 +15,11 @@ export default defineConfig({
       uploadToken: process.env.CODECOV_TOKEN,
     }),
   ],
+  resolve: {
+    alias: {
+      "@expressots/core": path.resolve(__dirname, "node_modules/@expressots/core/lib/cjs/index.js"),
+    },
+  },
   test: {
     globals: true,
     environment: "node",
