@@ -49,6 +49,8 @@ describe("Cron Provider", () => {
       console.log("Hello World");
     });
 
+    expect(defaultCron).toBeDefined();
+    expect(defaultCron).toBeInstanceOf(CronJob);
     const tasks = cronProvider.getTasks();
     // Verify that the cron job was created with the mocked UUID
     expect(tasks.has("mocked-uuid")).toBe(true);
