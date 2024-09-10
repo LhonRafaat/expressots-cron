@@ -1,4 +1,4 @@
-# Expressots-cron Package
+# Expressots-cron
 
 ## About
 
