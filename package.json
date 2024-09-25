@@ -1,6 +1,6 @@
 {
   "name": "expressots-cron",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Expressots - Cron Provider (expressots-cron)",
   "author": "Lhon Rafaat Mohammed",
   "main": "./lib/cjs/index.js",
