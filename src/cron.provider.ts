@@ -5,7 +5,6 @@ import { createCron } from "./utils";
 import { CronJob } from "cron";
 import cronDB from "./db/cron.db";
 import { EXPRESSOTS_CRON } from "./constants";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 @injectable()
 export class CronProvider implements IProvider, ICron {
