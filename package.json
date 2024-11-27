@@ -61,7 +61,7 @@
   "dependencies": {
     "@expressots/core": "2.16.2",
     "cron": "^3.1.7",
-    "inversify": "6.0.3",
+    "inversify": "6.1.4",
     "reflect-metadata": "0.2.2",
     "uuid": "^11.0.3"
   },
