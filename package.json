@@ -59,7 +59,7 @@
     "lint:fix": "eslint \"src/**/*.ts\" --fix"
   },
   "dependencies": {
-    "@expressots/core": "2.16.2",
+    "@expressots/core": "3.0.0",
     "cron": "^3.1.7",
     "inversify": "6.0.3",
     "reflect-metadata": "0.2.2",
